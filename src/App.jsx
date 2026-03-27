@@ -114,7 +114,7 @@ const V = {
 
 // ⚠️ FORMSPREE: Maak een gratis account op https://formspree.io
 // Maak een nieuw formulier aan en vervang deze URL met jouw form endpoint:
-const FORMSPREE_URL = "https://formspree.io/f/YOUR_FORM_ID";
+const FORMSPREE_URL = "https://formspree.io/f/xlgodagn";
 
 const globalCSS = `
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
