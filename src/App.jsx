@@ -635,9 +635,9 @@ function Stats() {
       display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap: isMobile ? "1rem" : "2rem",
       padding: isMobile ? "3rem 1.25rem" : "5rem 3rem", borderBottom:`1px solid ${V.border}`,
     }}>
-      <AnimatedCounter target={50} suffix="+" label="Projecten opgeleverd" />
+      <AnimatedCounter target={10} suffix="+" label="Projecten opgeleverd" />
       <AnimatedCounter target={98} suffix="%" label="Klanttevredenheid" />
-      <AnimatedCounter target={5} suffix=" jaar" label="Ervaring" />
+      <AnimatedCounter target={7} suffix=" jaar" label="Ervaring" />
     </div>
   );
 }
@@ -1034,7 +1034,6 @@ function Footer({ onPrivacyOpen }) {
           <div style={{ fontFamily:V.font1, fontWeight:700, fontSize:"0.9rem", color:V.text, marginBottom:"1rem" }}>Bedrijfsgegevens</div>
           <div style={{ fontFamily:V.font2, color:V.muted, fontSize:"0.85rem", lineHeight:2.2 }}>
             <p>BTW: BE 1000.703.072</p>
-            <p>IBAN: BE30 1030 8654 7411</p>
           </div>
         </div>
       </div>
