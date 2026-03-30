@@ -355,7 +355,7 @@ function AnimatedCounter({ target, suffix = "", label }) {
       const progress = Math.max(0, Math.min(1, (windowH - rect.top) / (windowH + rect.height)));
 
       // Scale from 0.4 to 1.0 based on scroll position
-      setScale(0.4 + progress * 1.2);
+      setScale(0.6 + progress * 2);
 
       // Start counting when at least partially visible
       if (progress > 0.1 && !hasStarted) setHasStarted(true);
