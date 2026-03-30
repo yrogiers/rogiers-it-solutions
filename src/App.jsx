@@ -351,9 +351,20 @@ function AnimatedCounter({ target, suffix = "", label }) {
     requestAnimationFrame(tick);
   }, [visible, target]);
   return (
-    <div ref={ref} style={{ textAlign:"center" }}>
-      <div style={{ fontFamily:V.font1, fontWeight:900, fontSize:"clamp(2rem,5vw,4rem)", color:V.accent, lineHeight:1, opacity: visible ? 1 : 0, transition:"opacity 0.5s" }}>{count}{suffix}</div>
-      <div style={{ fontFamily:V.font2, color:V.muted, fontSize:"clamp(0.78rem,2vw,0.9rem)", marginTop:"0.5rem", fontWeight:500 }}>{label}</div>
+    <div ref={ref} style={{
+      textAlign:"center",
+      transform: visible ? "scale(1)" : "scale(0.3)",
+      opacity: visible ? 1 : 0,
+      transition:"transform 0.8s cubic-bezier(.16,1,.3,1), opacity 0.6s ease",
+    }}>
+      <div style={{
+        fontFamily:V.font1, fontWeight:900, fontSize:"clamp(2rem,5vw,4rem)",
+        color:V.accent, lineHeight:1,
+      }}>{count}{suffix}</div>
+      <div style={{
+        fontFamily:V.font2, color:V.muted, fontSize:"clamp(0.78rem,2vw,0.9rem)",
+        marginTop:"0.5rem", fontWeight:500,
+      }}>{label}</div>
     </div>
   );
 }
