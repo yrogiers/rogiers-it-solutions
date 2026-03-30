@@ -154,7 +154,7 @@ function GrainOverlay() {
 
 function CustomCursor() {
   const isMobile = useIsMobile(1024);
-  const smooth = useSmoothMouse(0.8);
+  const smooth = useSmoothMouse(0.5);
   const [hovering, setHovering] = useState(false);
   const [clicking, setClicking] = useState(false);
 
