@@ -338,36 +338,10 @@ function MarqueeStrip() {
 }
 
 function AnimatedCounter({ target, suffix = "", label }) {
-  const ref = useRef(null);
+  const [ref, visible] = useInView(0.3);
   const [count, setCount] = useState(0);
-  const [scale, setScale] = useState(0.4);
-  const [hasStarted, setHasStarted] = useState(false);
-
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-
-    const handleScroll = () => {
-      const rect = el.getBoundingClientRect();
-      const windowH = window.innerHeight;
-
-      // How far through the viewport: 0 = just entered bottom, 1 = reached top
-      const progress = Math.max(0, Math.min(1, (windowH - rect.top) / (windowH + rect.height)));
-
-      // Scale from 0.4 to 1.0 based on scroll position
-      setScale(0.6 + progress * 2);
-
-      // Start counting when at least partially visible
-      if (progress > 0.1 && !hasStarted) setHasStarted(true);
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll(); // check initial position
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [hasStarted]);
-
-  useEffect(() => {
-    if (!hasStarted) return;
+    if (!visible) return;
     const duration = 2000, start = Date.now();
     const tick = () => {
       const p = Math.min((Date.now() - start) / duration, 1);
@@ -375,23 +349,11 @@ function AnimatedCounter({ target, suffix = "", label }) {
       if (p < 1) requestAnimationFrame(tick);
     };
     requestAnimationFrame(tick);
-  }, [hasStarted, target]);
-
+  }, [visible, target]);
   return (
-    <div ref={ref} style={{
-      textAlign: "center",
-      transform: `scale(${scale})`,
-      opacity: Math.max(0, (scale - 0.4) / 0.6),
-      willChange: "transform, opacity",
-    }}>
-      <div style={{
-        fontFamily: V.font1, fontWeight: 900, fontSize: "clamp(2rem,5vw,4rem)",
-        color: V.accent, lineHeight: 1,
-      }}>{count}{suffix}</div>
-      <div style={{
-        fontFamily: V.font2, color: V.muted, fontSize: "clamp(0.78rem,2vw,0.9rem)",
-        marginTop: "0.5rem", fontWeight: 500,
-      }}>{label}</div>
+    <div ref={ref} style={{ textAlign:"center" }}>
+      <div style={{ fontFamily:V.font1, fontWeight:900, fontSize:"clamp(2rem,5vw,4rem)", color:V.accent, lineHeight:1, opacity: visible ? 1 : 0, transition:"opacity 0.5s" }}>{count}{suffix}</div>
+      <div style={{ fontFamily:V.font2, color:V.muted, fontSize:"clamp(0.78rem,2vw,0.9rem)", marginTop:"0.5rem", fontWeight:500 }}>{label}</div>
     </div>
   );
 }
