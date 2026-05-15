@@ -1,3 +1,5 @@
+import { HelmetProvider } from 'react-helmet-async';
+import { SEO } from './components/SEO'; // Adjust path if needed
 import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { 
   ArrowRight, Mail, MapPin, ExternalLink, ShoppingCart, 
@@ -1097,6 +1099,73 @@ function Footer({ onPrivacyOpen }) {
    ═══════════════════════════════════════════ */
 
 export default function App() {
+  // Inside App() component, before return statement
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Rogiers IT Solutions CommV",
+  "image": "https://yannrogiers.com/logo.jpg",
+  "@id": "https://yannrogiers.com",
+  "url": "https://yannrogiers.com",
+  "telephone": "+32470526972",
+  "priceRange": "€€",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Roesemslos 13",
+    "addressLocality": "Ternat",
+    "postalCode": "1742",
+    "addressCountry": "BE"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 50.8686,
+    "longitude": 4.1547
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    "opens": "09:00",
+    "closes": "18:00"
+  },
+  "sameAs": [
+    "https://www.linkedin.com/in/yann-rogiers-3a550013b/"
+  ],
+  "areaServed": {
+    "@type": "GeoCircle",
+    "geoMidpoint": {
+      "@type": "GeoCoordinates",
+      "latitude": 50.8503,
+      "longitude": 4.3517
+    },
+    "geoRadius": "100000"
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Hoelang duurt het om een website te bouwen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Een bedrijfswebsite is doorgaans klaar in 3 à 5 weken vanaf akkoord. Een webshop of maatwerk-project loopt op tot 6 à 10 weken, afhankelijk van de complexiteit."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wat kost een website?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Elk project is maatwerk. Na een vrijblijvend gesprek krijgt u een gedetailleerde offerte met een vaste prijs vooraf. Geen verrassingen op de factuur."
+      }
+    }
+    // Add more FAQ items as needed
+  ]
+};
+
+
   const [privacyOpen, setPrivacyOpen] = useState(false);
   const [cookieConsent, setCookieConsent] = useState(() => {
     try { return document.cookie.includes("cookie_consent="); } catch { return false; }
@@ -1112,6 +1181,13 @@ export default function App() {
   };
 
   return (
+    <HelmetProvider>  {/* ← ADD THIS WRAPPER */}
+      <SEO 
+        title="WordPress websites op maat voor Belgische KMO's"
+        description="Freelance WordPress-ontwikkelaar uit Ternat. Maatwerk websites, WooCommerce webshops & custom plugins. Geen templates, vaste prijs, één aanspreekpunt."
+        canonical="https://yannrogiers.com"
+        jsonLd={[localBusinessSchema, faqSchema]}
+      />
     <div style={{ background:V.bg, color:V.text, minHeight:"100vh", position:"relative" }}>
       <style>{globalCSS}</style>
       <GrainOverlay />
@@ -1131,5 +1207,7 @@ export default function App() {
       {!cookieConsent && <CookieBanner onAccept={handleCookieAccept} onDecline={handleCookieDecline} />}
       <PrivacyModal open={privacyOpen} onClose={() => setPrivacyOpen(false)} />
     </div>
+    </HelmetProvider>
+    
   );
 }
