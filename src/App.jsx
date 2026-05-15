@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { 
-  ArrowRight, Mail, MapPin, ExternalLink, Code, ShoppingCart, 
-  Search, Wrench, Send, ChevronDown, Menu, X, Phone, Palette, 
-  Share2, Puzzle, MessageCircle, ChevronUp, Shield, // <-- Correct named import
-  Building2, CreditCard, User, Award, Zap, HelpCircle 
+  ArrowRight, Mail, MapPin, ExternalLink, ShoppingCart, 
+  Wrench, Send, ChevronDown, Menu, X, Phone, 
+  Puzzle, MessageCircle, Shield,
+  CreditCard, User, LifeBuoy
 } from "lucide-react";
 const Linkedin = ({ size = 24, ...props }) => (
   <svg 
@@ -113,7 +113,6 @@ const V = {
 };
 
 // ⚠️ FORMSPREE: Maak een gratis account op https://formspree.io
-// Maak een nieuw formulier aan en vervang deze URL met jouw form endpoint:
 const FORMSPREE_URL = "https://formspree.io/f/xlgodagn";
 
 const globalCSS = `
@@ -320,7 +319,7 @@ function FloatingShapes() {
 }
 
 function MarqueeStrip() {
-  const items = ["Webdesign","◆","WordPress","◆","WooCommerce","◆","React","◆","SEO","◆","Plugin Development","◆","Social Media","◆","Google Ads","◆"];
+  const items = ["WordPress","◆","WooCommerce","◆","Custom Plugins","◆","Maatwerk Design","◆","Belgische KMO's","◆","Onderhoud & Support","◆","Eén aanspreekpunt","◆"];
   const doubled = [...items, ...items];
   return (
     <div style={{ overflow:"hidden", borderTop:`1px solid ${V.border}`, borderBottom:`1px solid ${V.border}`, padding:"1rem 0", whiteSpace:"nowrap" }}>
@@ -592,26 +591,26 @@ function Hero() {
           fontFamily:V.font1, fontWeight:900,
           fontSize: isMobile ? "clamp(2rem,10vw,3.2rem)" : "clamp(3.5rem,9.5vw,8.5rem)",
           lineHeight: isMobile ? 1.08 : 1.02, letterSpacing: isMobile ? "-1px" : "-4px", color:V.text,
-        }}>Wij bouwen websites die</TextReveal>
+        }}>Maatwerk WordPress.</TextReveal>
         <TextReveal as="h1" delay={0.55} style={{
           fontFamily:V.font1, fontWeight:900,
           fontSize: isMobile ? "clamp(2rem,10vw,3.2rem)" : "clamp(3.5rem,9.5vw,8.5rem)",
           lineHeight: isMobile ? 1.08 : 1.02, letterSpacing: isMobile ? "-1px" : "-4px", color:V.accent, fontStyle:"italic",
-        }}>grenzen verleggen.</TextReveal>
+        }}>Geen templates.</TextReveal>
       </div>
 
       <p style={{
         fontFamily:V.font2, color:V.muted, fontSize: isMobile ? "0.95rem" : "1.25rem",
         maxWidth: isMobile ? "100%" : 640, marginTop: isMobile ? "1.25rem" : "2rem", lineHeight:1.8,
         animation: loaded ? "slideUp 0.8s 0.6s cubic-bezier(.16,1,.3,1) both" : "none", opacity: loaded ? undefined : 0,
-      }}>Van eerste pixel tot livegang — Rogiers IT Solutions creëert digitale ervaringen die niet snel vergeten worden.</p>
+      }}>Ik bouw WordPress-websites op maat voor Belgische KMO's. Geen tussenpersonen, geen verrassingen op de factuur. Eén aanspreekpunt van eerste pixel tot livegang.</p>
 
       <div style={{
         display:"flex", flexDirection: isMobile ? "column" : "row", gap:"1rem", marginTop: isMobile ? "1.75rem" : "2.8rem",
         animation: loaded ? "slideUp 0.8s 0.75s cubic-bezier(.16,1,.3,1) both" : "none", opacity: loaded ? undefined : 0,
       }}>
-        <MagneticButton href="#contact" variant="primary" style={isMobile ? { justifyContent:"center" } : {}}>Start uw project <ArrowRight size={18} /></MagneticButton>
-        <MagneticButton href="#portfolio" variant="ghost" style={isMobile ? { justifyContent:"center" } : {}}>Bekijk ons werk</MagneticButton>
+        <MagneticButton href="#contact" variant="primary" style={isMobile ? { justifyContent:"center" } : {}}>Plan een gratis kennismaking <ArrowRight size={18} /></MagneticButton>
+        <MagneticButton href="#portfolio" variant="ghost" style={isMobile ? { justifyContent:"center" } : {}}>Bekijk mijn werk</MagneticButton>
       </div>
 
       {!isMobile && (
@@ -636,8 +635,8 @@ function Stats() {
       padding: isMobile ? "3rem 1.25rem" : "5rem 3rem", borderBottom:`1px solid ${V.border}`,
     }}>
       <AnimatedCounter target={10} suffix="+" label="Projecten opgeleverd" />
-      <AnimatedCounter target={98} suffix="%" label="Klanttevredenheid" />
-      <AnimatedCounter target={7} suffix=" jaar" label="Ervaring" />
+      <AnimatedCounter target={100} suffix="%" label="Maatwerk, geen templates" />
+      <AnimatedCounter target={7} suffix=" jaar" label="Ervaring in webdev" />
     </div>
   );
 }
@@ -647,21 +646,18 @@ function Services() {
   const isMobile = useIsMobile();
   const px = isMobile ? "1.25rem" : "3rem";
   const services = [
-    { icon:<Palette size={24} />, title:"Webdesign", desc:"Uniek en doelgericht design dat uw merk versterkt. Van wireframe tot pixel-perfect eindresultaat." },
-    { icon:<Code size={24} />, title:"Custom Development", desc:"Maatwerk websites in React, HTML/CSS en JavaScript. Snel, schaalbaar en precies op uw wensen gebouwd." },
-    { icon:<Wrench size={24} />, title:"WordPress Websites", desc:"Professionele WordPress sites met custom themes. Gebruiksvriendelijk zodat u zelf content kunt beheren." },
-    { icon:<ShoppingCart size={24} />, title:"WooCommerce Webshops", desc:"Complete e-commerce oplossingen die verkopen. Van productcatalogus tot checkout en betaalintegratie." },
-    { icon:<Puzzle size={24} />, title:"WordPress Plugins", desc:"Custom plugin development voor functionaliteit op maat. Van eenvoudige uitbreidingen tot complexe integraties." },
-    { icon:<Search size={24} />, title:"SEO & Google Ads", desc:"Hogere posities in Google en gerichte advertentiecampagnes. Meer bezoekers, meer leads, meer omzet." },
-    { icon:<Share2 size={24} />, title:"Social Media Content", desc:"Pakkende visuele content voor uw socials. Consistente branding die uw doelgroep aanspreekt en activeert." },
+    { icon:<Wrench size={24} />, title:"WordPress-websites op maat", desc:"Een professionele bedrijfswebsite, ontworpen en gebouwd vanaf nul. Snel, vindbaar in Google, en u beheert zelf de inhoud — zonder mij te bellen voor elke tekstwijziging." },
+    { icon:<ShoppingCart size={24} />, title:"WooCommerce webshops", desc:"Een complete webshop met productbeheer, betalingen (Mollie, Stripe), verzending en BTW-afhandeling. Klaar om vandaag te verkopen, mobile-first gebouwd." },
+    { icon:<Puzzle size={24} />, title:"Custom WordPress plugins", desc:"Werkt uw bedrijf met een specifiek proces dat geen bestaande plugin afdekt? Ik bouw plugins op maat — van koppelingen met uw boekhouding tot complexe productconfiguratoren." },
+    { icon:<LifeBuoy size={24} />, title:"Onderhoud & support", desc:"Maandelijkse updates, back-ups, beveiliging en kleine aanpassingen. Eén vast aanspreekpunt, geen ticketsysteem. Vraag de voorwaarden aan." },
   ];
   return (
     <section id="diensten" ref={ref} style={{ padding:`${isMobile?"3.5rem":"6rem"} ${px}` }}>
       <div style={{ animation: visible ? "slideIn 0.7s cubic-bezier(.16,1,.3,1) both" : "none", opacity: visible ? undefined : 0 }}>
         <div style={{ fontFamily:V.font1, fontSize:"0.78rem", fontWeight:800, textTransform:"uppercase", letterSpacing:"4px", color:V.accent, marginBottom:"1rem" }}>Diensten</div>
-        <h2 style={{ fontFamily:V.font1, fontWeight:900, fontSize:"clamp(1.8rem,4vw,3.5rem)", letterSpacing:"-2px", color:V.text, marginBottom:"0.75rem" }}>Wat wij doen</h2>
+        <h2 style={{ fontFamily:V.font1, fontWeight:900, fontSize:"clamp(1.8rem,4vw,3.5rem)", letterSpacing:"-2px", color:V.text, marginBottom:"0.75rem" }}>Wat ik doe</h2>
         <p style={{ fontFamily:V.font2, color:V.muted, fontSize: isMobile ? "0.92rem" : "1.05rem", maxWidth:560, marginBottom: isMobile ? "2rem" : "3.5rem", lineHeight:1.8 }}>
-          Van concept tot lancering — wij bieden een volledig pakket digitale diensten op maat van uw bedrijf.
+          Vier diensten, één specialisatie: WordPress op maat voor Belgische KMO's. Geen page-builders, geen kant-en-klare themes, geen verborgen kosten.
         </p>
       </div>
       <div style={{ display:"grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fit, minmax(260px, 1fr))", gap:"1.25rem" }}>
@@ -692,8 +688,26 @@ function Portfolio() {
   const [hovered, setHovered] = useState(null);
   const px = isMobile ? "1.25rem" : "3rem";
   const projects = [
-    { initials:"SM", name:"Secmaer", desc:"Volledig custom WordPress website voor een producent van winkelinterieurs voor merken als Swatch, Tissot en meer. Custom theme met projectportfolio.", tags:["WordPress","Custom Theme","Portfolio"], grad:"linear-gradient(135deg,#0a1a3a,#0d2b50)", color:"#4d8dff", url:"https://secmaer.com" },
-    { initials:"EZ", name:"EZ Access", desc:"Professionele website voor een specialist in blindegeleidingsvoorzieningen. Toegankelijk design met focus op duidelijke informatieoverdracht.", tags:["WordPress","Toegankelijkheid","Webdesign"], grad:"linear-gradient(135deg,#0a2a1a,#0d3822)", color:V.accent, url:"https://ezaccess.be" },
+    {
+      initials:"SM",
+      name:"Secmaer",
+      desc:"B2B website voor een producent van premium winkelinterieurs (klanten: Swatch, Tissot e.a.). Custom WordPress theme met aparte ingangen voor architecten, KMO's, enterprise en distributeurs. Meertalig, met gestructureerd projectportfolio.",
+      tags:["WordPress","Custom Theme","B2B","Meertalig"],
+      grad:"linear-gradient(135deg,#0a1a3a,#0d2b50)",
+      color:"#ff8a1f",
+      url:"https://secmaer.com",
+      image:"/portfolio/secmaer.jpg",
+    },
+    {
+      initials:"EZ",
+      name:"EZ Access",
+      desc:"Bedrijfswebsite voor een specialist in toegankelijkheidsvoorzieningen (geleidelijnen, podotactiele tegels). Toegankelijk design (WCAG-richtlijnen), helder leesbare typografie en projectgalerij die het vakwerk toont.",
+      tags:["WordPress","Toegankelijkheid","WCAG","Portfolio"],
+      grad:"linear-gradient(135deg,#0a2a1a,#0d3822)",
+      color:V.accent,
+      url:"https://ezaccess.be",
+      image:"/portfolio/ezaccess.jpg",
+    },
   ];
   return (
     <section id="portfolio" ref={ref} style={{
@@ -704,7 +718,7 @@ function Portfolio() {
         <div style={{ fontFamily:V.font1, fontSize:"0.78rem", fontWeight:800, textTransform:"uppercase", letterSpacing:"4px", color:V.accent, marginBottom:"1rem" }}>Portfolio</div>
         <h2 style={{ fontFamily:V.font1, fontWeight:900, fontSize:"clamp(1.8rem,4vw,3.5rem)", letterSpacing:"-2px", color:V.text, marginBottom:"0.75rem" }}>Recent werk</h2>
         <p style={{ fontFamily:V.font2, color:V.muted, fontSize: isMobile ? "0.92rem" : "1.05rem", maxWidth:560, marginBottom: isMobile ? "2rem" : "3.5rem", lineHeight:1.8 }}>
-          Een selectie uit onze projecten. Elk uniek, elk resultaat meetbaar.
+          Een selectie uit mijn projecten. Klik door om de live site te bekijken — elk project gebouwd vanaf nul, geen template hergebruikt.
         </p>
       </div>
       <div style={{ display:"grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(2, 1fr)", gap:"1.25rem" }}>
@@ -723,24 +737,48 @@ function Portfolio() {
                 animation: cVis ? `slideUp 0.7s ${i*0.1}s cubic-bezier(.16,1,.3,1) both` : "none", opacity: cVis ? undefined : 0,
                 display:"block",
               }}>
-              <div style={{ height: isMobile ? 160 : 220, position:"relative", overflow:"hidden", background:p.grad }}>
+              <div style={{ height: isMobile ? 180 : 280, position:"relative", overflow:"hidden", background:p.grad }}>
+                {p.image && (
+                  <img
+                    src={p.image}
+                    alt={`Screenshot van ${p.name}`}
+                    loading="lazy"
+                    onError={(e) => { e.currentTarget.style.display = "none"; }}
+                    style={{
+                      position:"absolute", inset:0,
+                      width:"100%", height:"100%",
+                      objectFit:"cover", objectPosition:"top center",
+                      transform: !isMobile && isH ? "scale(1.05)" : "scale(1)",
+                      transition:"transform 0.7s cubic-bezier(.25,.1,.25,1)",
+                      filter: isH ? "brightness(0.85)" : "brightness(0.7)",
+                    }}
+                  />
+                )}
+                {/* Fallback initials layer — hidden behind image when image loads */}
                 <div style={{
-                  width:"100%", height:"100%", display:"flex", alignItems:"center", justifyContent:"center",
+                  position:"absolute", inset:0,
+                  display:"flex", alignItems:"center", justifyContent:"center",
                   fontFamily:V.font1, fontWeight:900, fontSize: isMobile ? "2.8rem" : "4rem",
-                  letterSpacing:"-3px", color:p.color, opacity: isH ? 0.9 : 0.6,
-                  transform: !isMobile && isH ? "scale(1.15) rotate(-2deg)" : undefined,
-                  transition:"all 0.6s cubic-bezier(.25,.1,.25,1)",
+                  letterSpacing:"-3px", color:p.color, opacity: 0.25,
+                  zIndex: 0,
                 }}>{p.initials}</div>
+                {/* Gradient overlay for legibility */}
+                <div style={{
+                  position:"absolute", inset:0,
+                  background:`linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.4) 100%)`,
+                  pointerEvents:"none",
+                }} />
                 {!isMobile && (
                   <div style={{
-                    position:"absolute", inset:0, background:"rgba(0,0,0,0.5)",
+                    position:"absolute", inset:0, background:"rgba(0,0,0,0.45)",
                     display:"flex", alignItems:"center", justifyContent:"center",
                     opacity: isH ? 1 : 0, transition:"opacity 0.4s",
                   }}>
                     <div style={{
-                      width:52, height:52, borderRadius:"50%", background:V.accent, color:V.bg,
+                      width:56, height:56, borderRadius:"50%", background:V.accent, color:V.bg,
                       display:"flex", alignItems:"center", justifyContent:"center",
                       transform: isH ? "scale(1)" : "scale(0.5)", transition:"transform 0.4s cubic-bezier(.16,1,.3,1)",
+                      boxShadow:`0 0 30px ${V.accentGlow}`,
                     }}><ExternalLink size={22} /></div>
                   </div>
                 )}
@@ -767,9 +805,10 @@ function About() {
   const isMobile = useIsMobile();
   const px = isMobile ? "1.25rem" : "3rem";
   const values = [
-    { icon:<User size={22} />, title:"Persoonlijke aanpak", desc:"Geen nummertje, maar een partner. Directe communicatie en korte lijnen." },
-    { icon:<Award size={22} />, title:"Kwaliteit boven kwantiteit", desc:"Liever drie uitmuntende projecten dan tien middelmatige. Elk detail telt." },
-    { icon:<Zap size={22} />, title:"Snelle levering", desc:"Strakke deadlines en transparante tijdlijnen. U weet altijd waar u staat." },
+    { icon:<User size={22} />, title:"Eén aanspreekpunt", desc:"Geen account manager, geen tickets. U mailt of belt mij rechtstreeks — van eerste gesprek tot oplevering." },
+    { icon:<CreditCard size={22} />, title:"Vaste prijs vooraf", desc:"U weet wat u betaalt voordat ik begin. Geen verrassingen op de factuur, geen meerwerk uit het niets." },
+    { icon:<Wrench size={22} />, title:"U beheert zelf", desc:"Ik bouw zo dat u tekst, foto's en producten zelf kan aanpassen — zonder mij te bellen voor elke wijziging." },
+    { icon:<MapPin size={22} />, title:"Lokaal & bereikbaar", desc:"Gevestigd in Ternat, beschikbaar voor klanten in heel Vlaanderen en Brussel. Een face-to-face koffie kan altijd." },
   ];
   return (
     <section id="over-ons" ref={ref} style={{ padding:`${isMobile?"3.5rem":"6rem"} ${px}` }}>
@@ -784,13 +823,13 @@ function About() {
       }}>
         <div>
           <p style={{ fontFamily:V.font2, color:V.muted, fontSize: isMobile ? "0.95rem" : "1.05rem", lineHeight:1.85, marginBottom:"1.25rem" }}>
-            Ik ben Yann Rogiers, oprichter van Rogiers IT Solutions. Met een passie voor design en technologie help ik bedrijven hun online aanwezigheid naar het volgende niveau te tillen.
+            Ik ben Yann Rogiers, freelance WordPress-ontwikkelaar uit Ternat. Ik bouw websites voor Belgische KMO's die meer willen dan een template, maar geen agency-budget hebben — en die rechtstreeks willen praten met de persoon die de site bouwt.
           </p>
           <p style={{ fontFamily:V.font2, color:V.muted, fontSize: isMobile ? "0.95rem" : "1.05rem", lineHeight:1.85, marginBottom:"1.25rem" }}>
-            Of het nu gaat om een strakke bedrijfswebsite, een complexe webshop of een custom WordPress plugin — ik combineer creatief design met solide techniek. Elk project krijgt mijn volle aandacht, van het eerste gesprek tot de oplevering en daarna.
+            Geen page-builders, geen kant-en-klare themes uit een marketplace. Elk project wordt vanaf nul opgebouwd in WordPress, met een eigen design en een dashboard dat u zelf kan gebruiken — ook nadat het project is afgerond.
           </p>
           <p style={{ fontFamily:V.font2, color:V.muted, fontSize: isMobile ? "0.95rem" : "1.05rem", lineHeight:1.85 }}>
-            Gevestigd in Ternat, werk ik samen met bedrijven in heel België en daarbuiten.
+            Werkt u liever met iemand die zijn telefoon opneemt? Plan een vrijblijvende kennismaking — een koffie in Ternat of een videogesprek, wat u verkiest.
           </p>
           <a href="https://www.linkedin.com/in/yann-rogiers-3a550013b/" target="_blank" rel="noopener noreferrer"
             style={{
@@ -835,12 +874,12 @@ function FAQ() {
   const px = isMobile ? "1.25rem" : "3rem";
   const [openIndex, setOpenIndex] = useState(null);
   const faqs = [
-    { q:"Hoelang duurt het om een website te bouwen?", a:"Dit hangt af van de complexiteit. Een eenvoudige bedrijfswebsite is doorgaans klaar binnen 2-4 weken. Een webshop of maatwerk project kan 4-8 weken in beslag nemen. Bij de start van elk project bespreken we een realistische planning." },
-    { q:"Wat kost een website?", a:"Elke website is anders, dus de prijs hangt af van uw specifieke wensen. Neem vrijblijvend contact op voor een offerte op maat. Zo weet u precies wat u kunt verwachten." },
-    { q:"Kan ik zelf mijn website aanpassen na oplevering?", a:"Jazeker! Bij WordPress-projecten krijgt u een gebruiksvriendelijk dashboard waarmee u zelf teksten, afbeeldingen en pagina's kunt aanpassen. Ik voorzie ook een korte opleiding bij oplevering." },
-    { q:"Bieden jullie ook hosting aan?", a:"Ik kan u adviseren over de beste hosting voor uw project en help bij de setup. Ook het volledige technisch beheer en onderhoud van uw website kan ik voor mijn rekening nemen." },
-    { q:"Wat als ik al een website heb die ik wil vernieuwen?", a:"Geen probleem! Ik analyseer uw huidige website, bespreek de verbeterpunten en bouw een volledig nieuwe site die beter presteert — zowel qua design als techniek. Bestaande content kan worden gemigreerd." },
-    { q:"Werken jullie ook voor bedrijven buiten België?", a:"Absoluut. Dankzij digitale communicatie werk ik vlot samen met bedrijven in Nederland, Luxemburg en verder. Taal is geen barrière — ik communiceer vloeiend in het Nederlands, Frans en Engels." },
+    { q:"Hoelang duurt het om een website te bouwen?", a:"Een bedrijfswebsite is doorgaans klaar in 3 à 5 weken vanaf akkoord. Een webshop of maatwerk-project loopt op tot 6 à 10 weken, afhankelijk van de complexiteit. Bij de start van elk project leg ik een realistische planning vast met duidelijke milestones — u weet altijd waar u staat." },
+    { q:"Wat kost een website?", a:"Elk project is maatwerk, dus ik werk niet met een vaste prijslijst. Wat ik wél doe: na een vrijblijvend gesprek krijgt u een gedetailleerde offerte met een vaste prijs vooraf. Geen verrassingen op de factuur, geen meerwerk uit het niets. Vraag gerust een offerte aan — ik antwoord binnen 24 uur." },
+    { q:"Kan ik zelf mijn website aanpassen na oplevering?", a:"Ja, dat is het uitgangspunt. Bij elk WordPress-project krijgt u een dashboard waarmee u zelf teksten, afbeeldingen, producten en pagina's kan aanpassen — zonder mij te moeten bellen. Bij oplevering geef ik een korte opleiding zodat u meteen aan de slag kan." },
+    { q:"Bieden jullie ook hosting aan?", a:"Ik bied geen hosting zelf aan, maar adviseer u over de beste keuze voor uw project (meestal Combell, Hostinger of een Belgische host) en regel de volledige setup. Ook maandelijks onderhoud — updates, back-ups, security — kan ik voor u verzorgen." },
+    { q:"Wat als ik al een website heb die ik wil vernieuwen?", a:"Geen probleem. Ik analyseer uw huidige site, breng de pijnpunten in kaart (snelheid, structuur, SEO, conversie) en bouw een nieuwe versie die beter presteert. Bestaande content en SEO-rankings worden zorgvuldig gemigreerd zodat u geen organisch verkeer verliest." },
+    { q:"Werkt u ook voor bedrijven buiten België?", a:"Ja. Ik werk vlot samen met bedrijven in Nederland, Luxemburg, Frankrijk en daarbuiten. Communicatie verloopt in het Nederlands, Frans of Engels — wat u verkiest. Voor klanten verder weg gebeurt alles digitaal." },
   ];
   return (
     <section id="faq" ref={ref} style={{
@@ -873,8 +912,8 @@ function FAQ() {
                 }} />
               </button>
               <div style={{
-                maxHeight: isOpen ? 300 : 0, overflow:"hidden",
-                transition:"max-height 0.4s cubic-bezier(.25,.1,.25,1)",
+                maxHeight: isOpen ? 500 : 0, overflow:"hidden",
+                transition:"max-height 0.5s cubic-bezier(.25,.1,.25,1)",
               }}>
                 <p style={{ fontFamily:V.font2, color:V.muted, fontSize:"0.88rem", lineHeight:1.8, paddingBottom:"1.25rem" }}>{faq.a}</p>
               </div>
@@ -891,7 +930,7 @@ function Contact() {
   const isMobile = useIsMobile();
   const [form, setForm] = useState({ naam:"", email:"", onderwerp:"", bericht:"" });
   const [focused, setFocused] = useState(null);
-  const [status, setStatus] = useState(null); // null | "sending" | "success" | "error"
+  const [status, setStatus] = useState(null);
   const px = isMobile ? "1.25rem" : "3rem";
 
   const handleSubmit = async () => {
@@ -924,7 +963,7 @@ function Contact() {
         <div style={{ fontFamily:V.font1, fontSize:"0.78rem", fontWeight:800, textTransform:"uppercase", letterSpacing:"4px", color:V.accent, marginBottom:"1rem" }}>Contact</div>
         <h2 style={{ fontFamily:V.font1, fontWeight:900, fontSize:"clamp(1.8rem,4vw,3.5rem)", letterSpacing:"-2px", color:V.text, marginBottom:"0.75rem" }}>Klaar om te starten?</h2>
         <p style={{ fontFamily:V.font2, color:V.muted, fontSize: isMobile ? "0.92rem" : "1.05rem", maxWidth:560, marginBottom: isMobile ? "2rem" : "3.5rem", lineHeight:1.8 }}>
-          Vertel ons over uw project. Wij nemen binnen 24 uur contact op.
+          Vertel mij over uw project — ik antwoord binnen 24 uur met een eerste reactie en, indien gewenst, een voorstel voor een vrijblijvende kennismaking.
         </p>
       </div>
 
@@ -935,10 +974,10 @@ function Contact() {
       }}>
         <div>
           <h3 style={{ fontFamily:V.font1, fontWeight:800, fontSize: isMobile ? "1.3rem" : "1.6rem", color:V.text, marginBottom:"1rem", letterSpacing:"-0.5px" }}>
-            Laten we samen iets bijzonders creëren.
+            Laten we samen iets bijzonders bouwen.
           </h3>
           <p style={{ fontFamily:V.font2, color:V.muted, lineHeight:1.85, marginBottom:"2rem", fontSize:"0.92rem" }}>
-            Of het nu gaat om een volledig nieuwe website, een redesign of een webshop — wij denken graag met u mee.
+            Of het nu gaat om een nieuwe website, een redesign, een webshop of een custom plugin — vertel waar u staat en wat u nodig heeft. Ik denk graag mee voordat er sprake is van een offerte.
           </p>
           {[
             { icon:<Mail size={20} />, text:"yannrogiers@gmail.com" },
@@ -973,7 +1012,7 @@ function Contact() {
           <div>
             <label style={{ fontFamily:V.font2, fontSize:"0.8rem", fontWeight:700, color:V.muted, marginBottom:"0.4rem", display:"block" }}>Bericht *</label>
             <textarea value={form.bericht} onChange={e => setForm({...form,bericht:e.target.value})}
-              onFocus={() => setFocused("bericht")} onBlur={() => setFocused(null)} placeholder="Vertel ons meer over uw wensen..." rows={5}
+              onFocus={() => setFocused("bericht")} onBlur={() => setFocused(null)} placeholder="Vertel meer over uw project, doelpubliek, gewenste timing..." rows={5}
               style={{ ...inputStyle("bericht"), resize:"vertical", minHeight:120 }} />
           </div>
           <div style={{ display:"flex", flexDirection: isMobile ? "column" : "row", alignItems: isMobile ? "stretch" : "center", gap:"1rem", marginTop:"0.5rem" }}>
@@ -982,7 +1021,7 @@ function Contact() {
             </MagneticButton>
             {status === "success" && (
               <span style={{ fontFamily:V.font2, color:V.accent, fontSize:"0.88rem", fontWeight:700, animation:"slideIn 0.4s cubic-bezier(.16,1,.3,1) both", textAlign: isMobile ? "center" : "left" }}>
-                ✓ Bedankt! Wij nemen spoedig contact op.
+                ✓ Bedankt! Ik neem binnen 24 uur contact op.
               </span>
             )}
             {status === "error" && (
@@ -1008,7 +1047,6 @@ function Footer({ onPrivacyOpen }) {
         gap: isMobile ? "2rem" : "3rem",
         marginBottom:"2.5rem",
       }}>
-        {/* Col 1: Company info */}
         <div>
           <div style={{ fontFamily:V.font1, fontWeight:900, fontSize:"1.3rem", color:V.text, marginBottom:"1rem" }}>
             Rogiers<span style={{ color:V.accent }}>.</span>IT
@@ -1019,7 +1057,6 @@ function Footer({ onPrivacyOpen }) {
             <p>1742 Ternat, België</p>
           </div>
         </div>
-        {/* Col 2: Contact */}
         <div>
           <div style={{ fontFamily:V.font1, fontWeight:700, fontSize:"0.9rem", color:V.text, marginBottom:"1rem" }}>Contact</div>
           <div style={{ fontFamily:V.font2, color:V.muted, fontSize:"0.85rem", lineHeight:2.2 }}>
@@ -1028,7 +1065,6 @@ function Footer({ onPrivacyOpen }) {
             <p><a href="https://www.linkedin.com/in/yann-rogiers-3a550013b/" target="_blank" rel="noopener noreferrer" style={{ color:V.accent, textDecoration:"none", display:"inline-flex", alignItems:"center", gap:4 }}><Linkedin size={14} /> LinkedIn</a></p>
           </div>
         </div>
-        {/* Col 3: Bedrijfsinfo */}
         <div>
           <div style={{ fontFamily:V.font1, fontWeight:700, fontSize:"0.9rem", color:V.text, marginBottom:"1rem" }}>Bedrijfsgegevens</div>
           <div style={{ fontFamily:V.font2, color:V.muted, fontSize:"0.85rem", lineHeight:2.2 }}>
@@ -1036,7 +1072,6 @@ function Footer({ onPrivacyOpen }) {
           </div>
         </div>
       </div>
-      {/* Bottom bar */}
       <div style={{
         display:"flex", flexDirection: isMobile ? "column" : "row",
         justifyContent:"space-between", alignItems:"center",
@@ -1070,7 +1105,6 @@ export default function App() {
   const handleCookieAccept = () => {
     document.cookie = "cookie_consent=accepted;max-age=31536000;path=/;SameSite=Lax";
     setCookieConsent(true);
-    // Hier kunt u Google Analytics initialiseren
   };
   const handleCookieDecline = () => {
     document.cookie = "cookie_consent=declined;max-age=31536000;path=/;SameSite=Lax";
