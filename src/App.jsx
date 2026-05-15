@@ -488,7 +488,7 @@ function PrivacyModal({ open, onClose }) {
         </Section>
 
         <Section title="8. Beveiliging">
-          <p>Wij nemen passende technische en organisatorische maatregelen om uw persoonsgegevens te beschermen tegen ongeoorloofde toegang, verlies of misbruik..</p>
+          <p>Wij nemen passende technische en organisatorische maatregelen om uw persoonsgegevens te beschermen tegen ongeoorloofde toegang, verlies of misbruik.</p>
         </Section>
 
         <p style={{ fontFamily:V.font2, color:V.muted, fontSize:"0.78rem", marginTop:"1rem", paddingTop:"1rem", borderTop:`1px solid ${V.border}` }}>
@@ -694,7 +694,6 @@ function Portfolio() {
   const projects = [
     { initials:"SM", name:"Secmaer", desc:"Volledig custom WordPress website voor een producent van winkelinterieurs voor merken als Swatch, Tissot en meer. Custom theme met projectportfolio.", tags:["WordPress","Custom Theme","Portfolio"], grad:"linear-gradient(135deg,#0a1a3a,#0d2b50)", color:"#4d8dff", url:"https://secmaer.com" },
     { initials:"EZ", name:"EZ Access", desc:"Professionele website voor een specialist in blindegeleidingsvoorzieningen. Toegankelijk design met focus op duidelijke informatieoverdracht.", tags:["WordPress","Toegankelijkheid","Webdesign"], grad:"linear-gradient(135deg,#0a2a1a,#0d3822)", color:V.accent, url:"https://ezaccess.be" },
-    { initials:"HG", name:"Haagem", desc:"Moderne website voor een nieuwbouwproject in de vastgoedsector. Strakke presentatie van het project met visuele focus.", tags:["WordPress","Vastgoed","Responsive"], grad:"linear-gradient(135deg,#2a0a2a,#3d0d38)", color:"#d14dff", url:"https://haagem.be" },
   ];
   return (
     <section id="portfolio" ref={ref} style={{
@@ -708,7 +707,7 @@ function Portfolio() {
           Een selectie uit onze projecten. Elk uniek, elk resultaat meetbaar.
         </p>
       </div>
-      <div style={{ display:"grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fit, minmax(300px, 1fr))", gap:"1.25rem" }}>
+      <div style={{ display:"grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(2, 1fr)", gap:"1.25rem" }}>
         {projects.map((p, i) => {
           const [cRef, cVis] = useInView(0.12);
           const isH = hovered === i;
