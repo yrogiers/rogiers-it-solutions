@@ -40,10 +40,7 @@
       "destination": "/",
       "permanent": true
     }
-  ],
-   "github": {
-    "silent": true
-  }
+  ]
 }
 
 
