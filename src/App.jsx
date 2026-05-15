@@ -488,7 +488,7 @@ function PrivacyModal({ open, onClose }) {
         </Section>
 
         <Section title="8. Beveiliging">
-          <p>Wij nemen passende technische en organisatorische maatregelen om uw persoonsgegevens te beschermen tegen ongeoorloofde toegang, verlies of misbruik.</p>
+          <p>Wij nemen passende technische en organisatorische maatregelen om uw persoonsgegevens te beschermen tegen ongeoorloofde toegang, verlies of misbruik..</p>
         </Section>
 
         <p style={{ fontFamily:V.font2, color:V.muted, fontSize:"0.78rem", marginTop:"1rem", paddingTop:"1rem", borderTop:`1px solid ${V.border}` }}>
