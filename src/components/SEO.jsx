@@ -10,7 +10,7 @@ export const SEO = ({
   noIndex = false 
 }) => {
   const siteTitle = title ? `${title} | Rogiers IT Solutions` : 'Rogiers IT Solutions';
-  const siteDescription = description || 'Freelance WordPress-ontwikkelaar uit Ternat. Maatwerk websites, WooCommerce webshops & custom plugins voor Belgische KMO\'s.';
+  const siteDescription = description || 'Freelance WordPress-ontwikkelaar uit Ternat. Maatwerk websites, design voor web & print en custom plugins voor Belgische KMO\'s.';
   const siteUrl = canonical || 'https://yannrogiers.com';
   const siteImage = image.startsWith('http') ? image : `https://yannrogiers.com${image}`;
 
@@ -40,7 +40,7 @@ export const SEO = ({
       <meta name="twitter:creator" content="@yourhandle" data-rh="true" />
       
       {/* Additional SEO */}
-      <meta name="keywords" content="WordPress, WooCommerce, webdesign, Ternat, België, KMO, maatwerk, freelance developer" data-rh="true" />
+      <meta name="keywords" content="WordPress, webdesign, grafisch ontwerp, print design, Ternat, België, KMO, maatwerk, freelance developer" data-rh="true" />
       <meta name="author" content="Yann Rogiers" data-rh="true" />
       <meta name="geo.region" content="BE-BRU" data-rh="true" />
       <meta name="geo.placename" content="Ternat" data-rh="true" />

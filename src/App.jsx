@@ -1,9 +1,9 @@
 import { HelmetProvider } from 'react-helmet-async';
 import { SEO } from './components/SEO'; // Adjust path if needed
 import { useState, useEffect, useRef, useCallback, useMemo } from "react";
-import { 
-  ArrowRight, Mail, MapPin, ExternalLink, ShoppingCart, 
-  Wrench, Send, ChevronDown, Menu, X, Phone, 
+import {
+  ArrowRight, Mail, MapPin, ExternalLink, Palette,
+  Wrench, Send, ChevronDown, Menu, X, Phone,
   Puzzle, MessageCircle, Shield,
   CreditCard, User, LifeBuoy
 } from "lucide-react";
@@ -321,7 +321,7 @@ function FloatingShapes() {
 }
 
 function MarqueeStrip() {
-  const items = ["WordPress","◆","WooCommerce","◆","Custom Plugins","◆","Maatwerk Design","◆","Belgische KMO's","◆","Onderhoud & Support","◆","Eén aanspreekpunt","◆"];
+  const items = ["WordPress","◆","Webdesign & Print","◆","Custom Plugins","◆","Maatwerk Design","◆","Belgische KMO's","◆","Onderhoud & Support","◆","Eén aanspreekpunt","◆"];
   const doubled = [...items, ...items];
   return (
     <div style={{ overflow:"hidden", borderTop:`1px solid ${V.border}`, borderBottom:`1px solid ${V.border}`, padding:"1rem 0", whiteSpace:"nowrap" }}>
@@ -649,7 +649,7 @@ function Services() {
   const px = isMobile ? "1.25rem" : "3rem";
   const services = [
     { icon:<Wrench size={24} />, title:"WordPress-websites op maat", desc:"Een professionele bedrijfswebsite, ontworpen en gebouwd vanaf nul. Snel, vindbaar in Google, en u beheert zelf de inhoud — zonder mij te bellen voor elke tekstwijziging." },
-    { icon:<ShoppingCart size={24} />, title:"WooCommerce webshops", desc:"Een complete webshop met productbeheer, betalingen (Mollie, Stripe), verzending en BTW-afhandeling. Klaar om vandaag te verkopen, mobile-first gebouwd." },
+    { icon:<Palette size={24} />, title:"Design voor web & print", desc:"Van visuele identiteit tot drukklare bestanden: logo's, huisstijl, brochures, flyers en webdesign. Eén consistente look over alle dragers heen, met oog voor detail en uw merk centraal." },
     { icon:<Puzzle size={24} />, title:"Custom WordPress plugins", desc:"Werkt uw bedrijf met een specifiek proces dat geen bestaande plugin afdekt? Ik bouw plugins op maat — van koppelingen met uw boekhouding tot complexe productconfiguratoren." },
     { icon:<LifeBuoy size={24} />, title:"Onderhoud & support", desc:"Maandelijkse updates, back-ups, beveiliging en kleine aanpassingen. Eén vast aanspreekpunt, geen ticketsysteem. Vraag de voorwaarden aan." },
   ];
@@ -1184,7 +1184,7 @@ const faqSchema = {
     <HelmetProvider>  {/* ← ADD THIS WRAPPER */}
       <SEO 
         title="WordPress websites op maat voor Belgische KMO's"
-        description="Freelance WordPress-ontwikkelaar uit Ternat. Maatwerk websites, WooCommerce webshops & custom plugins. Geen templates, vaste prijs, één aanspreekpunt."
+        description="Freelance WordPress-ontwikkelaar uit Ternat. Maatwerk websites, design voor web & print en custom plugins. Geen templates, vaste prijs, één aanspreekpunt."
         canonical="https://yannrogiers.com"
         jsonLd={[localBusinessSchema, faqSchema]}
       />
