@@ -37,12 +37,11 @@ export const SEO = ({
       <meta name="twitter:title" content={siteTitle} data-rh="true" />
       <meta name="twitter:description" content={siteDescription} data-rh="true" />
       <meta name="twitter:image" content={siteImage} data-rh="true" />
-      <meta name="twitter:creator" content="@yourhandle" data-rh="true" />
-      
+
       {/* Additional SEO */}
       <meta name="keywords" content="WordPress, webdesign, grafisch ontwerp, print design, Ternat, België, KMO, maatwerk, freelance developer" data-rh="true" />
       <meta name="author" content="Yann Rogiers" data-rh="true" />
-      <meta name="geo.region" content="BE-BRU" data-rh="true" />
+      <meta name="geo.region" content="BE-VBR" data-rh="true" />
       <meta name="geo.placename" content="Ternat" data-rh="true" />
       
       {/* JSON-LD Structured Data */}

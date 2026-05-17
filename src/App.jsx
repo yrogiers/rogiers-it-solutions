@@ -5,7 +5,7 @@ import {
   ArrowRight, Mail, MapPin, ExternalLink, Palette,
   Wrench, Send, ChevronDown, Menu, X, Phone,
   Puzzle, MessageCircle, Shield,
-  CreditCard, User, LifeBuoy
+  CreditCard, User, LifeBuoy, FileText, Rocket
 } from "lucide-react";
 const Linkedin = ({ size = 24, ...props }) => (
   <svg 
@@ -684,6 +684,54 @@ function Services() {
   );
 }
 
+function Process() {
+  const [ref, visible] = useInView(0.1);
+  const isMobile = useIsMobile();
+  const px = isMobile ? "1.25rem" : "3rem";
+  const steps = [
+    { icon:<MessageCircle size={22} />, title:"Gesprek", desc:"Vrijblijvend kennismakingsgesprek per video of bij een koffie in Ternat. We bespreken uw project, uw doel en uw tijdslijn — geen druk, geen verkooppraat." },
+    { icon:<FileText size={22} />, title:"Offerte", desc:"Binnen vijf werkdagen ontvangt u een gedetailleerde offerte met vaste prijs en concrete planning. Wat erin staat, krijgt u — niets meer, niets minder." },
+    { icon:<Wrench size={22} />, title:"Build", desc:"Ik bouw uw site vanaf nul, met wekelijkse updates en een staging-omgeving. U volgt de voortgang en kan tussentijds bijsturen waar nodig." },
+    { icon:<Rocket size={22} />, title:"Oplevering", desc:"Korte opleiding, overdracht van het dashboard, en u gaat live. Daarna optioneel een onderhoudscontract — geen verplichting, wel beschikbaar." },
+  ];
+  return (
+    <section id="proces" ref={ref} style={{
+      padding:`${isMobile?"3.5rem":"6rem"} ${px}`,
+      background:`linear-gradient(180deg, ${V.bg} 0%, #080812 100%)`,
+    }}>
+      <div style={{ animation: visible ? "slideIn 0.7s cubic-bezier(.16,1,.3,1) both" : "none", opacity: visible ? undefined : 0 }}>
+        <div style={{ fontFamily:V.font1, fontSize:"0.78rem", fontWeight:800, textTransform:"uppercase", letterSpacing:"4px", color:V.accent, marginBottom:"1rem" }}>Proces</div>
+        <h2 style={{ fontFamily:V.font1, fontWeight:900, fontSize:"clamp(1.8rem,4vw,3.5rem)", letterSpacing:"-2px", color:V.text, marginBottom:"0.75rem" }}>Hoe ik werk</h2>
+        <p style={{ fontFamily:V.font2, color:V.muted, fontSize: isMobile ? "0.92rem" : "1.05rem", maxWidth:560, marginBottom: isMobile ? "2rem" : "3.5rem", lineHeight:1.8 }}>
+          Van eerste gesprek tot livegang in vier duidelijke stappen. U weet altijd waar u staat en wat de volgende stap is.
+        </p>
+      </div>
+      <div style={{ display:"grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(4, 1fr)", gap: isMobile ? "1rem" : "1.25rem" }}>
+        {steps.map((s, i) => {
+          const [cRef, cVis] = useInView(0.15);
+          return (
+            <div ref={cRef} key={i} style={{
+              background:V.bgCard, border:`1px solid ${V.border}`, borderRadius:V.radius,
+              padding: isMobile ? "1.5rem 1.25rem" : "1.75rem 1.5rem",
+              position:"relative",
+              animation: cVis ? `scaleIn 0.5s ${i*0.08}s cubic-bezier(.16,1,.3,1) both` : "none", opacity: cVis ? undefined : 0,
+            }}>
+              <div style={{
+                position:"absolute", top: isMobile ? "1.25rem" : "1.5rem", right: isMobile ? "1.25rem" : "1.5rem",
+                fontFamily:V.font1, fontWeight:900, fontSize:"0.9rem",
+                color:V.muted, opacity:0.5, letterSpacing:"1px",
+              }}>{String(i+1).padStart(2,"0")}</div>
+              <div style={{ width:44, height:44, display:"flex", alignItems:"center", justifyContent:"center", background:V.accentDim, borderRadius:12, color:V.accent, marginBottom:"1rem" }}>{s.icon}</div>
+              <h3 style={{ fontFamily:V.font1, fontWeight:700, fontSize:"1.05rem", color:V.text, marginBottom:"0.45rem" }}>{s.title}</h3>
+              <p style={{ fontFamily:V.font2, color:V.muted, fontSize:"0.85rem", lineHeight:1.7 }}>{s.desc}</p>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
 function Portfolio() {
   const [ref, visible] = useInView(0.1);
   const isMobile = useIsMobile();
@@ -1099,73 +1147,6 @@ function Footer({ onPrivacyOpen }) {
    ═══════════════════════════════════════════ */
 
 export default function App() {
-  // Inside App() component, before return statement
-const localBusinessSchema = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "Rogiers IT Solutions CommV",
-  "image": "https://yannrogiers.com/logo.jpg",
-  "@id": "https://yannrogiers.com",
-  "url": "https://yannrogiers.com",
-  "telephone": "+32470526972",
-  "priceRange": "€€",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Roesemslos 13",
-    "addressLocality": "Ternat",
-    "postalCode": "1742",
-    "addressCountry": "BE"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 50.8686,
-    "longitude": 4.1547
-  },
-  "openingHoursSpecification": {
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-    "opens": "09:00",
-    "closes": "18:00"
-  },
-  "sameAs": [
-    "https://www.linkedin.com/in/yann-rogiers-3a550013b/"
-  ],
-  "areaServed": {
-    "@type": "GeoCircle",
-    "geoMidpoint": {
-      "@type": "GeoCoordinates",
-      "latitude": 50.8503,
-      "longitude": 4.3517
-    },
-    "geoRadius": "100000"
-  }
-};
-
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Hoelang duurt het om een website te bouwen?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Een bedrijfswebsite is doorgaans klaar in 3 à 5 weken vanaf akkoord. Een webshop of maatwerk-project loopt op tot 6 à 10 weken, afhankelijk van de complexiteit."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Wat kost een website?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Elk project is maatwerk. Na een vrijblijvend gesprek krijgt u een gedetailleerde offerte met een vaste prijs vooraf. Geen verrassingen op de factuur."
-      }
-    }
-    // Add more FAQ items as needed
-  ]
-};
-
-
   const [privacyOpen, setPrivacyOpen] = useState(false);
   const [cookieConsent, setCookieConsent] = useState(() => {
     try { return document.cookie.includes("cookie_consent="); } catch { return false; }
@@ -1182,11 +1163,10 @@ const faqSchema = {
 
   return (
     <HelmetProvider>  {/* ← ADD THIS WRAPPER */}
-      <SEO 
+      <SEO
         title="WordPress websites op maat voor Belgische KMO's"
         description="Freelance WordPress-ontwikkelaar uit Ternat. Maatwerk websites, design voor web & print en custom plugins. Geen templates, vaste prijs, één aanspreekpunt."
         canonical="https://yannrogiers.com"
-        jsonLd={[localBusinessSchema, faqSchema]}
       />
     <div style={{ background:V.bg, color:V.text, minHeight:"100vh", position:"relative" }}>
       <style>{globalCSS}</style>
@@ -1198,6 +1178,7 @@ const faqSchema = {
       <MarqueeStrip />
       <Stats />
       <Services />
+      <Process />
       <Portfolio />
       <About />
       <FAQ />
