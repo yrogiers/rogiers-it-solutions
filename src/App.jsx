@@ -591,12 +591,12 @@ function Hero() {
       <div style={{ marginTop: isMobile ? "1.25rem" : "2rem", position:"relative", zIndex:2 }}>
         <TextReveal as="h1" delay={0.2} style={{
           fontFamily:V.font1, fontWeight:900,
-          fontSize: isMobile ? "clamp(2rem,10vw,3.2rem)" : "clamp(3.5rem,9.5vw,8.5rem)",
+          fontSize: isMobile ? "clamp(2rem,10vw,3.2rem)" : "clamp(3rem,8vw,7.5rem)",
           lineHeight: isMobile ? 1.08 : 1.02, letterSpacing: isMobile ? "-1px" : "-4px", color:V.text,
-        }}>Maatwerk WordPress.</TextReveal>
+        }}>Webdesign op maat.</TextReveal>
         <TextReveal as="h1" delay={0.55} style={{
           fontFamily:V.font1, fontWeight:900,
-          fontSize: isMobile ? "clamp(2rem,10vw,3.2rem)" : "clamp(3.5rem,9.5vw,8.5rem)",
+          fontSize: isMobile ? "clamp(2rem,10vw,3.2rem)" : "clamp(3rem,8vw,7.5rem)",
           lineHeight: isMobile ? 1.08 : 1.02, letterSpacing: isMobile ? "-1px" : "-4px", color:V.accent, fontStyle:"italic",
         }}>Geen templates.</TextReveal>
       </div>
