@@ -710,21 +710,22 @@ function Process() {
         {steps.map((s, i) => {
           const [cRef, cVis] = useInView(0.15);
           return (
-            <div ref={cRef} key={i} style={{
+            <TiltCard key={i} style={{
               background:V.bgCard, border:`1px solid ${V.border}`, borderRadius:V.radius,
               padding: isMobile ? "1.5rem 1.25rem" : "1.75rem 1.5rem",
-              position:"relative",
               animation: cVis ? `scaleIn 0.5s ${i*0.08}s cubic-bezier(.16,1,.3,1) both` : "none", opacity: cVis ? undefined : 0,
             }}>
-              <div style={{
-                position:"absolute", top: isMobile ? "1.25rem" : "1.5rem", right: isMobile ? "1.25rem" : "1.5rem",
-                fontFamily:V.font1, fontWeight:900, fontSize:"0.9rem",
-                color:V.muted, opacity:0.5, letterSpacing:"1px",
-              }}>{String(i+1).padStart(2,"0")}</div>
-              <div style={{ width:44, height:44, display:"flex", alignItems:"center", justifyContent:"center", background:V.accentDim, borderRadius:12, color:V.accent, marginBottom:"1rem" }}>{s.icon}</div>
-              <h3 style={{ fontFamily:V.font1, fontWeight:700, fontSize:"1.05rem", color:V.text, marginBottom:"0.45rem" }}>{s.title}</h3>
-              <p style={{ fontFamily:V.font2, color:V.muted, fontSize:"0.85rem", lineHeight:1.7 }}>{s.desc}</p>
-            </div>
+              <div ref={cRef}>
+                <div style={{
+                  position:"absolute", top: isMobile ? "1.25rem" : "1.5rem", right: isMobile ? "1.25rem" : "1.5rem",
+                  fontFamily:V.font1, fontWeight:900, fontSize:"0.9rem",
+                  color:V.muted, opacity:0.5, letterSpacing:"1px",
+                }}>{String(i+1).padStart(2,"0")}</div>
+                <div style={{ width:44, height:44, display:"flex", alignItems:"center", justifyContent:"center", background:V.accentDim, borderRadius:12, color:V.accent, marginBottom:"1rem" }}>{s.icon}</div>
+                <h3 style={{ fontFamily:V.font1, fontWeight:700, fontSize:"1.05rem", color:V.text, marginBottom:"0.45rem" }}>{s.title}</h3>
+                <p style={{ fontFamily:V.font2, color:V.muted, fontSize:"0.85rem", lineHeight:1.7 }}>{s.desc}</p>
+              </div>
+            </TiltCard>
           );
         })}
       </div>
