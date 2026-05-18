@@ -214,7 +214,7 @@ function TextReveal({ children, as: Tag = "span", style = {}, delay = 0 }) {
   return (
     <Tag ref={ref} style={{ ...style, display:"flex", flexWrap:"wrap", gap:"0 0.3em", perspective:"600px" }}>
       {words.map((w, i) => (
-        <span key={i} style={{ display:"inline-block", overflow:"hidden" }}>
+        <span key={i} style={{ display:"inline-block", overflow:"hidden", padding:"0 0.1em", margin:"0 -0.1em" }}>
           <span style={{
             display:"inline-block",
             animation: visible ? `letterPop 0.6s ${delay + i * 0.04}s cubic-bezier(.16,1,.3,1) both` : "none",
